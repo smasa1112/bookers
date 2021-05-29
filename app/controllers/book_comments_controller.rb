@@ -10,7 +10,8 @@ class BookCommentsController < ApplicationController
       @book=book
       @user=@book.user
       @new_book=Book.new
-      render 'books/show'
+      @book_comment=BookComment.new
+      render "books/show"
     end
   end
 
