@@ -1,24 +1,16 @@
-# README
+## Bookers
+### 書籍管理ツール
+ユーザー認証をして本の感想を投稿するアプリケーションです  
+投稿した本にはコメントをつけることができ、いいね機能も存在します
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 実装機能
+-ユーザー認証機能  
+  -ユーザー認証にはdeviseを使用  
+  -画像投稿にはrefileを使用
+-感想投稿機能  
+-投稿に対するコメント機能  
+-投稿に対するいいね機能  
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 更新予定
+-フォロー機能  
+-検索機能  
