@@ -24,7 +24,7 @@
         <td>
           <% if book.favorited_by?(current_user) %>
             <p>
-              <div class="-favorite">
+              <div class="before-favorite">
                 <%= link_to book_favorites_path(book), method: :delete do %>
                   <i class="fas fa-heart"></i><%= book.favorites.count %>
                 <% end %>
