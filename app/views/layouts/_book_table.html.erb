@@ -21,24 +21,8 @@
         <td>
           <%= book.body %>
         </td>
-        <td>
-          <% if book.favorited_by?(current_user) %>
-            <p>
-              <div class="before-favorite">
-                <%= link_to book_favorites_path(book), method: :delete do %>
-                  <i class="fas fa-heart"></i><%= book.favorites.count %>
-                <% end %>
-              </div>
-            </p>
-          <% else %>
-            <p>
-              <div class="after-favorite">
-                <%= link_to book_favorites_path(book), method: :post do %>
-                  <i class="far fa-heart"></i><%= book.favorites.count %>
-                <% end %>
-              </div>
-            </p>
-          <% end %>
+        <td class=<%= "table__favorite--" + book.id.to_s %>>
+          <%= render "favorites/book", book: book, user: current_user %>
         </td>
         <td>
           コメント数:<%= book.book_comments.count %>
