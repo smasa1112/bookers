@@ -40,6 +40,7 @@ class User < ApplicationRecord
     follows.include?(user)
   end
 
+  # User.{}みたいな感じで使いたいときにはself.{}とする
   def self.search(search,search_way)
     if search
       if search_way=="complete"
