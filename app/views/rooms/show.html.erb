@@ -1,26 +1,41 @@
-<h1>DM</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1><%= @opponent.name %>さんとのチャット</h1>
 
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
+      <% if @messages.present? %>
+        <table class="table table-borderless m-3">
+          <% @messages.each do |message| %>
+            <% if message.user== @opponent %>
+              <tr>
+                <td><div class="bg-secondary text-light py-3 d-flex justify-content-center"><%= message.content %></div></td>
+                <td></td>
+              </tr>
+            <% else %>
+              <tr>
+                <td></td>
+                <td><div class="bg-primary text-light py-3 d-flex justify-content-center"><%= message.content %></div></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      <% else %>
+        <div class="m-3 d-flex justify-content-center">メッセージはまだありません</div>
+      <% end %>
+    </div>
+  </div>
 
-<hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
-
-<%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @message, url: messages_path, local: true do |f| %>
+        <div class="form-group">
+          <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"form-control" %>
+        </div>
+        <%= f.hidden_field :room_id, value: @room.id%>
+        <div class="form-group">
+          <%= f.submit "メッセージを送信", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

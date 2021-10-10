@@ -2,7 +2,7 @@
   <% if user.follow?(current_user) and current_user.follow?(user) %>
     <!--相互フォローの場合のみチャットルームが表示されるようにする-->
     <% if is_room %>
-      <%= link_to "チャットへ", room_path(room.id) %>
+      <%= link_to "チャットへ", room_path(room.id), class:"btn btn-success" %>
     <% else %>
       <%= form_with model: room, url: rooms_path do |f| %>
         <%= fields_for entry do |e| %>
