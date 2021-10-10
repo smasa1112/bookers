@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_books, through: :favorites, source: :book
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
-  def followed_by?(user)
-    relationships.where(user_id: user.id).exists?
-  end
+ 
 
   attachment :profile_image
 
@@ -39,6 +39,10 @@ class User < ApplicationRecord
 
   def follow?(user)
     follows.include?(user)
+  end
+  
+  def followed_by?(user)
+    relationships.where(user_id: user.id).exists?
   end
 
   # User.{}みたいな感じで使いたいときにはself.{}とする
