@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  impressionist :actions=>[:show]
   def create
     @book=Book.new(book_params)
     @book.user_id=current_user.id
@@ -14,6 +14,7 @@ class BooksController < ApplicationController
 
   def show
     @book=Book.find(params[:id])
+    impressionist(@book)
     @new_book=Book.new
     @comment=BookComment.new
   end
