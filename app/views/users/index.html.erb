@@ -4,6 +4,8 @@
       <%= render "layouts/user_info", user: current_user %>
       <%= render "layouts/new_book", new_book: @new_book %>
     </div>
-  <%= render "users/user_index", users: @users %>
+    <div class="col-md-8 offset-md-1">
+      <%= render "users/user_index", users: @users %>
+    </div>
   </div>
 </div>
