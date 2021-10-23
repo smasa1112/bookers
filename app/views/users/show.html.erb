@@ -7,6 +7,9 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <%= render "layouts/book_table", books: @books%>
+      <%= render "record", user: @user %>
+      <%= render "chart", user: @user %>
+      <%= render "post_num",user: @user %>
     </div>
   </div>
 </div>

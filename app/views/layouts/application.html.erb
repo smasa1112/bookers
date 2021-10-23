@@ -4,6 +4,7 @@
     <title>Booker2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= Gon::Base.render_data %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -53,6 +54,10 @@
       </nav>
     </header>
     <main>
+
+      <!--ログインなど各動作の成功メッセージ-->
+      <p id="notice"><%= notice %></p>
+
       <!--ログインしている場合のみ検索フォームを出現させる-->
       <% if user_signed_in? %>
         <div class="container mt-3">
@@ -70,8 +75,7 @@
           </div>
         </div>
       <% end %>
-      <!--ログインなど各動作の成功メッセージ-->
-      <p id="notice"><%= notice %></p>
+
       <%= yield %>
     </main>
     <footer>

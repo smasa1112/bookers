@@ -11,10 +11,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
- 
-
   attachment :profile_image
-
+  
   validates :name, uniqueness: true
   validates :name, length: {in:2..20}
   validates :introduction, length: {maximum: 50}
@@ -44,6 +42,8 @@ class User < ApplicationRecord
   def followed_by?(user)
     relationships.where(user_id: user.id).exists?
   end
+  
+  
 
   # User.{}みたいな感じで使いたいときにはself.{}とする
   def self.search(search,search_way)

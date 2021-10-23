@@ -1,0 +1,28 @@
+<h2>7日間分の投稿</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <% 6.step(0,-1) do |i| %>
+        <% if i == 0 %>
+          <th>今日</th>
+        <% else %>
+          <th><%= i %>日前</th>
+        <% end %>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% 6.step(0,-1) do |i| %>
+        <td><%= user.books.n_day_before(i).count %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+
+<div data-turbolinks='false'>
+  <canvas id="myChart" width="400" height="400"></canvas>
+  <script>draw_graph();</script>
+</div>

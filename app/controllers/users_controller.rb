@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     @books=@user.books
     @new_book=Book.new
+    #グラフ描画に使用する.coffeeファイルに変数を転送する
+    gon.linedata = []
+    6.step(0, -1) do |i|
+      gon.linedata << @user.books.n_day_before(i).count
+    end
     #DM用のコード
     #それぞれ保持しているEntryを列挙
     @current_user_entries = Entry.where(user_id: current_user.id)
@@ -22,8 +27,9 @@ class UsersController < ApplicationController
         @room = Room.new
         @entry = Entry.new
       end
-
     end
+
+
   end
 
   def edit
