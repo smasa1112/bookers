@@ -1,0 +1,11 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "layouts/user_info", user: current_user %>
+      <%= render "layouts/new_book", new_book: @new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render "group_index", groups: @groups %>
+    </div>
+  </div>
+</div>
