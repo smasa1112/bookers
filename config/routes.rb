@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   get "search" => "searches#search", as: "search"
 
   resources :groups do
-    resources :group_users, only:[:create, :destroy]
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
+    resource :group_users, only:[:create, :destroy]
   end
 
   resources :books do
     resources :book_comments, only:[:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  
+
   resources :users, only: [:show, :edit, :index, :update] do
     resource :relationships, only: [:create, :destroy]
     get "/relationships/follows" => "relationships#follows", as: "follows"
