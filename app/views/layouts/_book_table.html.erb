@@ -43,15 +43,15 @@
   </tbody>
 </table>
 
-
 <script>
-  $(document).ready(function(){
-    $('.movie-evaluation').raty({
-      readOnly: true,
-      score: function() {
-        return $(this).attr('data-score');
-      },
-      path: '/assets/'
-    })
+// 一度空にしてから表示することでブラウザバックでのエラーが防げる
+// ブラウザバックすると前のjqueryのアクションとブラウザバックしたあとのjqueryのアクションが重なる
+  $('.movie-evaluation').empty();
+  $('.movie-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
   });
 </script>
