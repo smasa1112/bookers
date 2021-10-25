@@ -4,6 +4,7 @@
     <th></th>
     <th>Title</th>
     <th>Opinion</th>
+    <th>Category</th>
     <th></th>
     <th></th>
   </thead>
@@ -21,16 +22,36 @@
         <td>
           <%= book.body %>
         </td>
+        <td>
+          <div data-turbolinks='false'>
+            <%= link_to book.category, books_path(category: book.category) %>
+          </div>
+        </td>
         <td class=<%= "table__favorite--" + book.id.to_s %>>
           <%= render "favorites/book", book: book, user: current_user %>
         </td>
+
         <td>
           コメント数:<%= book.book_comments.count %>
         </td>
         <td>
           閲覧数:<%= book.impressionist_count %>
         </td>
+        <td class="movie-evaluation" data-score="<%= book.evaluation %>"></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<script>
+// 一度空にしてから表示することでブラウザバックでのエラーが防げる
+// ブラウザバックすると前のjqueryのアクションとブラウザバックしたあとのjqueryのアクションが重なる
+  $('.movie-evaluation').empty();
+  $('.movie-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

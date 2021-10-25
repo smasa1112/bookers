@@ -20,7 +20,22 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books=Book.last_week_rank
+    if params[:way]=="new"
+      @books=Book.all.order(created_at: "DESC")
+    elsif params[:way]=="evaluation"
+      @books=Book.all.order(evaluation: "DESC")
+    else
+      @books=Book.all.last_week_rank
+    end
+
+    if params[:category]
+      if params[:match_type]
+        @books=Book.search(params[:category],params[:match_type],"category")
+      else
+        @books=Book.search(params[:category],"complete","category")
+      end
+    end
+
     @book=Book.new
   end
 
@@ -49,6 +64,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :evaluation, :category)
   end
 end

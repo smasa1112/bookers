@@ -32,16 +32,16 @@ class Book < ApplicationRecord
     #return self.includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
-  def self.search(search,search_way)
+  def self.search(search,search_way,column)
     if search
       if search_way=="complete"
-        return Book.where(["title LIKE ?", "#{search}"])
+        return Book.where(["#{column} LIKE ?", "#{search}"])
       elsif search_way=="forward"
-        return Book.where(["title LIKE ?", "#{search}%"])
+        return Book.where(["#{column} LIKE ?", "#{search}%"])
       elsif search_way=="backward"
-        return Book.where(["title LIKE ?", "%#{search}"])
+        return Book.where(["#{column} LIKE ?", "%#{search}"])
       else
-        return Book.where(["title LIKE ?", "%#{search}%"])
+        return Book.where(["#{column} LIKE ?", "%#{search}%"])
       end
     else
       return Book.all

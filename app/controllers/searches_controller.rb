@@ -6,10 +6,14 @@ class SearchesController < ApplicationController
     #選択肢がUserのときにはUserテーブルから検索
     if @model==0
       @datas = User.search(@keyword,match_type)
-    # それ以外の場合にはBookテーブルから検索
+    # Bookの場合はBookテーブルからタイトル検索
+    elsif @model==1
+      @datas = Book.search(@keyword,match_type,"title")
+    # それ以外の場合にはカテゴリー検索を行って一覧ページを表示
     else
-      @datas = Book.search(@keyword,match_type)
+      redirect_to books_path(category: @keyword, match_type: match_type)
     end
+
   end
 
   def get_number_of_post
