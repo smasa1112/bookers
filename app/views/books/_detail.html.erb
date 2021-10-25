@@ -14,7 +14,9 @@
       <%= book.body %>
     </td>
     <td>
-      <%= link_to book.category, books_path(category: book.category) %>
+      <div data-turbolinks='false'>
+        <%= link_to book.category, books_path(category: book.category) %>
+      </div>
     </td>
     <td class=<%= "table__favorite--" + book.id.to_s %>>
       <%= render "favorites/book", book: book, user: current_user %>
