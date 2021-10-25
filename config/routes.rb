@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   devise_for :users
   get "search" => "searches#search", as: "search"
   get "number_of_post" => "searches#get_number_of_post", as:"number_of_post"
+
+  resources :groups do
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
+    resource :group_users, only:[:create, :destroy]
+  end
+
   resources :books do
     resources :book_comments, only:[:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+
   resources :users, only: [:show, :edit, :index, :update] do
     resource :relationships, only: [:create, :destroy]
     get "/relationships/follows" => "relationships#follows", as: "follows"
