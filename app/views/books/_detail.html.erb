@@ -13,6 +13,9 @@
     <td>
       <%= book.body %>
     </td>
+    <td>
+      <%= link_to book.category, books_path(category: book.category) %>
+    </td>
     <td class=<%= "table__favorite--" + book.id.to_s %>>
       <%= render "favorites/book", book: book, user: current_user %>
     </td>
@@ -21,6 +24,9 @@
     </td>
     <td>
       閲覧数:<%= book.impressionist_count %>
+    </td>
+    <td>
+      <td class="movie-evaluation" data-score="<%= book.evaluation %>"></td>
     </td>
     <% if book.user==current_user %>
       <td>
@@ -32,3 +38,13 @@
     <% end %>
   </tr>
 </table>
+<!--評価用のjqueryコード-->
+<script>
+  $('.movie-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
