@@ -101,6 +101,8 @@ Rails.application.configure do
     authentication:       'login',
     enable_starttls_auto: true
   }
+  host = ENV["IP_address"]
+  config.action_mailer.default_url_options = { host: host,protocol: 'http'}
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
