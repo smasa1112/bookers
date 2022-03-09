@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <h2> Follow Users</h2>
       <% if @users.exists? %>
-        <%= render "users/user_index", users: @user %>
+        <%= render "users/user_index", users: @users %>
       <% else %>
         <p>ユーザーはいません</p>
       <% end %>

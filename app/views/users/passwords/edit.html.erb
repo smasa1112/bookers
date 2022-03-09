@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>パスワード変更</h2>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource), html: { method: :put }, rocal:true ) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+        <div class="field">
+          <%= f.label :password, "新しいパスワード" %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード(再入力)" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Change my password" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

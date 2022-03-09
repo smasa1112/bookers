@@ -69,4 +69,6 @@ Rails.application.configure do
     authentication:       'login',
     enable_starttls_auto: true
   }
+  host = 'https://e99f497b9f6042f0ac1976b8132eff84.vfs.cloud9.ap-northeast-1.amazonaws.com'
+  config.action_mailer.default_url_options = { host: host,protocol: 'http'}
 end

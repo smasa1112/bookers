@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
+  
+  def translation_to_i18n(local)
+    I18n.locale = local # Or whatever logic you use to choose.
+  end 
+    
 
   protected
 

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
 
   attachment :profile_image
-  
+
   validates :name, uniqueness: true
   validates :name, length: {in:2..20}
   validates :introduction, length: {maximum: 50}
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   # 被フォロー側の関係
   has_many :reverse_of_relationshiops, class_name:"Relationship", foreign_key: "follow_id", dependent: :destroy
   # 与フォロー側の関係
-  has_many :relationships, class_name:"Relationship", foreign_key:"follower_id", dependent: :destroy
+  has_many :relationships, class_name:"Relationship", foreign_key: "follower_id", dependent: :destroy
   # 被フォロー関係を通じて参照→自分をフォローしている人
   has_many :followers, through: :reverse_of_relationshiops, source: :follower
   # 与フォロー関係を通じて参照→自分がフォローしている人
@@ -39,12 +39,12 @@ class User < ApplicationRecord
   def follow?(user)
     follows.include?(user)
   end
-  
+
   def followed_by?(user)
     relationships.where(user_id: user.id).exists?
   end
-  
-  
+
+
 
   # User.{}みたいな感じで使いたいときにはself.{}とする
   def self.search(search,search_way)

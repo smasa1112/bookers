@@ -6,8 +6,12 @@
       <%= render "layouts/new_book", new_book: @new_book %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <%= render "layouts/book_table", books: @books%>
-      <%= render "record", user: @user %>
+      <div class="my-3">
+        <%= render "layouts/book_table", books: @books%>
+      </div>
+      <div class="my-3">
+        <%= render "record", user: @user %>
+      </div>
       <%= render "chart", user: @user %>
       <%= render "post_num",user: @user %>
     </div>

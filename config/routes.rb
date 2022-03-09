@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about" => "homes#about", as: "about"
-  devise_for :users
+  devise_for :users, controllers:{
+    registrations: "users/registrations",
+    sessions: "users/sessions",
+    passwords: "users/passwords",
+    confirmations: "users/confirmations"
+  }
   get "search" => "searches#search", as: "search"
   get "number_of_post" => "searches#get_number_of_post", as:"number_of_post"
 

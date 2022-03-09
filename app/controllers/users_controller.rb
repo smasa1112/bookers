@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
+  before_action ->{
+    translation_to_i18n(:ja)
+  }
+
+
   def show
-    @user=User.find(params[:id])
+    @user=User.includes(:books).find(params[:id])
     @books=@user.books
     @new_book=Book.new
     #グラフ描画に使用する.coffeeファイルに変数を転送する

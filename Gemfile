@@ -71,6 +71,7 @@ gem 'impressionist', '~>1.6.1'
 gem 'chart-js-rails'
 gem 'gon'
 gem 'dotenv-rails'
+gem 'devise-i18n'
 
 group :production do
   gem 'mysql2'

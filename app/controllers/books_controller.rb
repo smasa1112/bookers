@@ -1,4 +1,8 @@
 class BooksController < ApplicationController
+  before_action ->{
+    translation_to_i18n(:ja)
+  }
+  
   impressionist :actions=>[:show]
   def create
     @book=Book.new(book_params)
