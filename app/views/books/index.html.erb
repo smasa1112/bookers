@@ -10,13 +10,20 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-xl-3">
       <%= render "layouts/user_info", user: current_user %>
       <%= render "layouts/new_book", new_book: @book %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-xl-8 offset-xl-1">
+      <div class = "my-2">
+        <%= render "tag_list", tags: @tags %>
+      </div>
       <div class="my-2">
-        <%= link_to "新しい順", books_path(way: "new") %> | <%= link_to "評価の高い順", books_path(way: "evaluation") %>
+        <% if params[:tag] %>
+          <%= link_to "新しい順", books_path(way: "new",tag: params[:tag]) %> | <%= link_to "評価の高い順", books_path(way: "evaluation",tag: params[:tag]) %>
+        <% else %>
+          <%= link_to "新しい順", books_path(way: "new") %> | <%= link_to "評価の高い順", books_path(way: "evaluation") %>
+        <% end %>
       </div>
       <%= render "layouts/book_table", books: @books %>
     </div>

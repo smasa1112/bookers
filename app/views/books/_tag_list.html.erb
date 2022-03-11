@@ -1,0 +1,7 @@
+<% if tags.present? %>
+  <% tags.each do |tag| %>
+    <%= link_to "#{tag.name}(#{tag.taggings_count})", books_path(tag: tag.name) %>
+  <% end %>
+<% else %>
+  <p>登録されているタグはありません</p>
+<% end %>

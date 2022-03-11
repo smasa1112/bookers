@@ -72,6 +72,8 @@ gem 'chart-js-rails'
 gem 'gon'
 gem 'dotenv-rails'
 gem 'devise-i18n'
+gem 'acts-as-taggable-on', '~> 8.0'
+gem 'jquery-ui-rails'
 
 group :production do
   gem 'mysql2'
