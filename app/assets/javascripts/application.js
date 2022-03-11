@@ -13,6 +13,7 @@
 //= require jquery3
 //= require jquery
 //= require jquery.raty.js
+//= require jquery_ujs
 //= require jquery-ui
 //= require tag-it
 //= require popper
