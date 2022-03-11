@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
           <%= f.label :tag_list, "タグ(,で複数指定できます)" %>
-          <%= f.text_field :tag_list, value: @book.tag_list.join(',') ,class:"form-control" %>
+          <%= f.text_field :tag_list, value: @book.tag_list.join(',') ,class:"form-control tag_form" %>
         </div>
         <div class="movie-evaluation my-3" data-score="<%= @book.evaluation %>"></div>
         <div class="form-group">
