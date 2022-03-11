@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action ->{
     translation_to_i18n(:ja)
   }
-  
+
   impressionist :actions=>[:show]
   def create
     @book=Book.new(book_params)
@@ -24,12 +24,19 @@ class BooksController < ApplicationController
   end
 
   def index
-    if params[:way]=="new"
-      @books=Book.all.order(created_at: "DESC")
-    elsif params[:way]=="evaluation"
-      @books=Book.all.order(evaluation: "DESC")
+    # タグで取得したものに対しても並び替えできるようにしたい
+    if params[:tag]
+      books=Book.tagged_with(params[:tag])
     else
-      @books=Book.all.last_week_rank
+      books=Book.all
+    end
+
+    if params[:way]=="new"
+      @books=books.order(created_at: "DESC")
+    elsif params[:way]=="evaluation"
+      @books=books.order(evaluation: "DESC")
+    else
+      @books=books.last_week_rank
     end
 
     if params[:category]
@@ -40,6 +47,7 @@ class BooksController < ApplicationController
       end
     end
 
+    @tags=Book.tag_counts_on(:tags).most_used(10)
     @book=Book.new
   end
 
@@ -68,6 +76,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :body, :evaluation, :category)
+    params.require(:book).permit(:title, :body, :evaluation, :category,:tag_list)
   end
 end
