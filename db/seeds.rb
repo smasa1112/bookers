@@ -22,6 +22,18 @@ Book.create!(
   user_id: 1,
   created_at: 1.day.ago
 )
+Book.create!(
+  title: "test_created_yesterday_2",
+  body: "body_text",
+  user_id: 1,
+  created_at: 1.day.ago
+)
+Book.create!(
+  title: "test_created_two_days_ago",
+  body: "body_text",
+  user_id: 1,
+  created_at: 2.day.ago
+)
 
 Book.create!(
   title: "test_created_lastweek",

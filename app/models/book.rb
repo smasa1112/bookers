@@ -3,6 +3,8 @@ class Book < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+  #投稿する本にタグをつけられるようにする
+  acts_as_taggable_on :tags
   is_impressionable
 
   def favorited_by?(user)
