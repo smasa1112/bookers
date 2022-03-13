@@ -1,12 +1,14 @@
 <% if tags.present? %>
   <span class="font-weight-bold">人気のタグ</span> <i class="fas fa-tags"></i>
-  <div class="list-group list-group-horizontal-md">
+  <div class="row row-cols-md-4 row-cols-xl-5">
     <% tags.each do |tag| %>
-      <%= link_to books_path(tag: tag.name), class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
-        <%= "# #{tag.name}" %>
-        <span class="badge badge-primary badge-pill">
-          <%= "#{tag.taggings_count}"%>
-        </span>
+      <%= link_to books_path(tag: tag.name),class:"mx-1" do %>
+        <div class="col d-flex justify-content-between align-items-center btn btn-secondary" >
+          <%= "# #{tag.name}" %>
+          <span class="badge badge-primary badge-pill">
+            <%= "#{tag.taggings_count}"%>
+          </span>
+        </div>
       <% end %>
     <% end %>
   </div>
