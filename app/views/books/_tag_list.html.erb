@@ -1,8 +1,15 @@
 <% if tags.present? %>
-  <i class="fas fa-tags"></i>
-  <% tags.each do |tag| %>
-    <%= link_to "# #{tag.name}(#{tag.taggings_count})", books_path(tag: tag.name), class:"badge badge-dark" %>
-  <% end %>
+  <span class="font-weight-bold">人気のタグ</span> <i class="fas fa-tags"></i>
+  <div class="list-group list-group-horizontal-md">
+    <% tags.each do |tag| %>
+      <%= link_to books_path(tag: tag.name), class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+        <%= "# #{tag.name}" %>
+        <span class="badge badge-primary badge-pill">
+          <%= "#{tag.taggings_count}"%>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
 <% else %>
   <p>登録されているタグはありません</p>
 <% end %>
