@@ -1,6 +1,7 @@
 <% if tags.present? %>
+  <i class="fas fa-tags"></i>
   <% tags.each do |tag| %>
-    <%= link_to "#{tag.name}(#{tag.taggings_count})", books_path(tag: tag.name) %>
+    <%= link_to "# #{tag.name}(#{tag.taggings_count})", books_path(tag: tag.name), class:"badge badge-dark" %>
   <% end %>
 <% else %>
   <p>登録されているタグはありません</p>
