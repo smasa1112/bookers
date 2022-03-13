@@ -16,11 +16,11 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require tag-it
-//= require tag_addition.js
 //= require popper
 //= require bootstrap-sprockets
 //= require Chart.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require tag_addition
 //= require_tree .
