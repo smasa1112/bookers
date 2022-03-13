@@ -106,4 +106,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  #precopile時に自分で記載したjsファイルを読み込んでくれるように修正
+  #Rails.application.config.assets.precompile += %w( original.js )
+
 end
