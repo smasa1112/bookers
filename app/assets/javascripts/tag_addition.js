@@ -11,7 +11,7 @@
   // jqueryを＄として決めちゃう部分
   // ページ更新でtag-it発火
   // document.readyだと初回リロードのみなのでon('turbolinks:load'")
-  $(document).on('turbolinks:load',function() {
+  $(document).ready(function() {
     $(".tag_form").tagit({  // 指定のセレクタ( 今回は、:tag_list の text_field )に、tag-itを反映
       tagLimit:10,         // タグの最大数
       singleField: true,   // タグの一意性
