@@ -109,6 +109,6 @@ Rails.application.configure do
 
 
   #precopile時に自分で記載したjsファイルを読み込んでくれるように修正
-  #Rails.application.config.assets.precompile += %w( original.js )
+  Rails.application.config.assets.precompile += %w( tag_addition.js )
 
 end
