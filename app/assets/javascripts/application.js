@@ -13,14 +13,13 @@
 //= require jquery3
 //= require jquery
 //= require jquery.raty.js
-//= require jquery_ujs
+//= require rails-ujs
 //= require jquery-ui
 //= require tag-it
 //= require popper
 //= require bootstrap-sprockets
 //= require Chart.min
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
-// require tag_addition
-// require_tree .
+//= require tag_addition
+//= require_tree .
