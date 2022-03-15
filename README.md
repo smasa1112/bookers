@@ -21,6 +21,7 @@
 - chart.jsを使用したグラフの描画
 - ActionMailerを使用したメールの送信
 - rety.jsを使用した評価機能の実装
+- acts-as-taggleonを用いたタグ機能の実装
 
 ### 使用言語情報
   ruby 2.6.3
