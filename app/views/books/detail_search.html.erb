@@ -3,7 +3,7 @@
     <div class="col">
       <h2>本の詳細検索</h2>
       <%= search_form_for(@q, url: detail_search_result_books_path) do |f| %>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <%= f.label :title_cont, "タイトル",class: "col-2 offset-md-2" %>
           <div class="col-3 offset-md-1">
             <%= f.text_field :title_cont, class: "form-control",placeholder:"検索したいtitleを入力" %>
@@ -12,7 +12,7 @@
             <%= select("",:title,@content_select ) %>
           </div>
         </div>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <%= f.label :body_cont, "内容",class: "col-2 offset-md-2" %>
           <div class="col-3 offset-md-1">
             <%= f.text_field :body_cont, class: "form-control",placeholder:"検索したいbodyを入力" %>
@@ -21,7 +21,7 @@
             <%= select("",:body,@content_select, class:"form-control") %>
           </div>
         </div>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <%= f.label :user_name_cont, "投稿者",class: "col-2 offset-md-2" %>
           <div class="col-3 offset-md-1">
             <%= f.text_field :user_name_cont, class: "form-control",placeholder:"検索したい投稿者名を入力" %>
@@ -30,7 +30,7 @@
             <%= select("",:user_name,@content_select, class:"form-control") %>
           </div>
         </div>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <%= f.label :category_cont, "カテゴリー",class: "col-2 offset-md-2" %>
           <div class="col-3 offset-md-1">
             <%= f.text_field :category_cont, class: "form-control",placeholder:"検索したいcategoryを入力" %>
@@ -39,7 +39,7 @@
             <%= select("",:category,@content_select, class:"form-control") %>
           </div>
         </div>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <%= f.label :tags_name_cont, "タグ名",class: "col-2 offset-md-2" %>
           <div class="col-3 offset-md-1">
             <%= f.text_field :tags_name_cont, class: "form-control",placeholder:"検索したいタグ名を入力" %>
@@ -48,7 +48,7 @@
             <%= select("",:tags_name,@content_select, class:"form-control") %>
           </div>
         </div>
-        <div class="form-group form-row">
+        <div class="form-group form-row form-detail-search">
           <div class="col-2 offset-md-2">
             <%= f.label :evaluation_gteq,"星の数" %>
             <small id="evaluationHelp" class="form-text text-muted">ある得点のみを見たい場合は同じ値を選択</small>
@@ -76,7 +76,7 @@ $(document).ready(function(){
   $("select").change(function(){
     var val=$(this).val();
     // 直近のinput_formだけ取り出せるか検証→できた
-    var input_form=$(this).parents(".form-group").find("input");
+    var input_form=$(this).parents(".form-detail-search").find("input");
     // formのデータ型をvalによって変化させる
     var column_name=$(this).attr("id");
     // formのnameを変える
