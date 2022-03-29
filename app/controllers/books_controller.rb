@@ -76,6 +76,7 @@ class BooksController < ApplicationController
 
   def detail_search
     @q=Book.ransack(params[:q])
+    @content_select={"を含む" => "cont" , "を除く"=> "not_cont","で始まる"=> "start","で終わる"=> "end","完全一致"=> "eq"}
   end
 
   def detail_search_result
@@ -85,11 +86,24 @@ class BooksController < ApplicationController
 
   private
   def search_params
-    params.require(:q).permit!
+    attributes=[
+      *content_params("title"),
+      *content_params("category"),
+      *content_params("body"),
+      *content_params("user_name"),
+      *content_params("tags")
+      ]
+    params.require(:q).permit(*attributes)
   end
 
 
   def book_params
     params.require(:book).permit(:title, :body, :evaluation, :category,:tag_list)
   end
+
+  # セレクトフォームを作成する関係上すべてのパラメータをpermitできるわけではないためparam作成
+  def content_params(attribute)
+    return ["#{attribute}_cont".to_sym, "#{attribute}_eq".to_sym,"#{attribute}_not_cont".to_sym, "#{attribute}_start", "#{attribute}_end"]
+  end
+
 end
