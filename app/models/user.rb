@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
 
   # User.{}みたいな感じで使いたいときにはself.{}とする
-  def self.search(search,search_way)
+  def self.simple_search(search,search_way)
     if search
       if search_way=="complete"
         return User.where(["name LIKE ?", "#{search}"])

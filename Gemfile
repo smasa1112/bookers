@@ -75,6 +75,7 @@ gem 'devise-i18n'
 gem 'acts-as-taggable-on', '~> 8.0'
 gem 'jquery-ui-rails'
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem "ransack"
 
 group :production do
   gem 'mysql2'

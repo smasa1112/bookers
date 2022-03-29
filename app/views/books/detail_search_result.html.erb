@@ -1,0 +1,8 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <%= render "layouts/book_table" ,books: @books %>
+      <%= link_to "詳細検索に戻る" , detail_search_books_path, class:"text-dark" %>
+    </div>
+  </div>
+</div>
