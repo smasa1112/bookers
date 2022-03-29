@@ -34,7 +34,7 @@ class Book < ApplicationRecord
     #return self.includes(:favorited_users).sort{|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
-  def self.search(search,search_way,column)
+  def self.simple_search(search,search_way,column)
     if search
       if search_way=="complete"
         return Book.where(["#{column} LIKE ?", "#{search}"])

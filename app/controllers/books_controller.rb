@@ -74,7 +74,21 @@ class BooksController < ApplicationController
     end
   end
 
+  def detail_search
+    @q=Book.ransack(params[:q])
+  end
+
+  def detail_search_result
+    @q=Book.search(search_params)
+    @books=@q.result.includes([:user,:tags])
+  end
+
   private
+  def search_params
+    params.require(:q).permit!
+  end
+
+
   def book_params
     params.require(:book).permit(:title, :body, :evaluation, :category,:tag_list)
   end

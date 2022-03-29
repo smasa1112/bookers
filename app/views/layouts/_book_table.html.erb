@@ -1,4 +1,9 @@
-<h2>Books</h2>
+<% if params[:q] %>
+  <h2>検索結果</h2>
+<% else %>
+  <h2>Books</h2>
+<% end %>
+
 <div class="table-responsive-lg">
   <table class="table">
     <thead>
