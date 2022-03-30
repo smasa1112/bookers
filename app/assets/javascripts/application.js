@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery.raty.js
 //= require rails-ujs
+//= require jquery.jpostal
 //= require jquery-ui
 //= require tag-it
 //= require popper
@@ -22,6 +23,7 @@
 //= require activestorage
 //= require turbolinks
 //= require tag_addition
+//= require address_autofill
 //= require_tree .
 
 $(function() {

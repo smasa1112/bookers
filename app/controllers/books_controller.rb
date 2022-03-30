@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   def create
     @book=Book.new(book_params)
     @book.user_id=current_user.id
-    if @book.save
+    if @book.save!
       flash[:notice]="You have posted a new book successfully."
       redirect_to book_path(@book.id)
     else
@@ -93,7 +93,7 @@ class BooksController < ApplicationController
       *content_params("user_name"),
       *content_params("tags")
       ]
-    params.require(:q).permit(*attributes)
+    params.require(:q).permit(*attributes,:evaluation_gteq,:evaluation_lteq)
   end
 
 

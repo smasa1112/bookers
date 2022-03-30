@@ -28,6 +28,11 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :follows, through: :relationships, source: :follow
 
+  include JpPrefecture
+
+  jp_prefecture :prefecture_code
+
+
   def follow(user_id)
     relationships.create(follow_id: user_id)
   end
@@ -45,7 +50,6 @@ class User < ApplicationRecord
   end
 
 
-
   # User.{}みたいな感じで使いたいときにはself.{}とする
   def self.simple_search(search,search_way)
     if search
@@ -61,5 +65,14 @@ class User < ApplicationRecord
     else
       return User.all
     end
+  end
+
+
+  def prefecture_name
+    return JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_code).code
   end
 end
