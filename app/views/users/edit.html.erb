@@ -16,6 +16,26 @@
           <label for="user_introduction">Introduction</label>
           <%= f.text_area :introduction, autofocus: true, class:"form-control", placeholder:"Introduction" %>
         </div>
+         <div class="field">
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :prefecture_code %><br />
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :city %><br />
+          <%= f.text_field :city, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :street %><br />
+          <%= f.text_field :street, autofocus: true %>
+        </div>
+
         <div class="form-group">
           <%= f.submit "Update User",class:"btn btn-secondary"%>
         </div>

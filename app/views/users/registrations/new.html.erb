@@ -5,7 +5,7 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource) )do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-         <div class="field">
+        <div class="field">
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true %>
         </div>
@@ -13,6 +13,26 @@
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :prefecture_code %><br />
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :city %><br />
+          <%= f.text_field :city, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :street %><br />
+          <%= f.text_field :street, autofocus: true %>
         </div>
 
         <div class="field">

@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # deviseでnameをキーにしたため、逆にemailを変更できるように許可する
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email,:prefecture_code,:postal_code,:city, :street])
   end
 end

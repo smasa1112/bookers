@@ -7,7 +7,10 @@ ja:
       user:
         name: 名前
         introduction: 紹介文
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+        street: 番地(建物名含む)
       book:
         title: タイトル
         body: 内容
-        
