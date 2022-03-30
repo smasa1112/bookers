@@ -68,7 +68,7 @@
               }
       );
   }
-  $(function(){
+  $(document).on('turbolinks:load',function(){
     drawMap("<%= "〒#{@user.postal_code} #{@user.prefecture_name}#{@user.city}#{@user.street}" %>");
   });
 
