@@ -23,3 +23,11 @@
 //= require turbolinks
 //= require tag_addition
 //= require_tree .
+
+$(function() {
+  $('.slider').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots:true,
+  });
+});
